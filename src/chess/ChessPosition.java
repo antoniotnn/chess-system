@@ -24,19 +24,24 @@ public class ChessPosition {
 	}
 
 	protected Position toPosition() {
-		/*matrix_row=8-chess_row  (Coluna da matriz é igual a 8 menos a coluna do xadrez - Fórmula)
-		 matrix_column=chess_column-'a' (Coluna da matriz é igual a coluna do xadrez menos caractere a - Fórmula)
+		/*matrix_row=8-chess_row  (Linha da matriz é igual a 8 menos a linha do xadrez - Fórmula)
+		 matrix_column=chess_column -'a' (Coluna da matriz é igual a coluna do xadrez menos caractere a - Fórmula)
 		a=0
 		b=1
-		c=2
+		c=2                    
 		'a'-'a'=0  (código do caractere a menos ele mesmo, como é o mesmo codigo, vai dar 0)
-		'b'-'a'=1
-		'c'-'a'=2 
+		'b'-'a'=1               
+		                        CM= CX-a
+		'c'-'a'=2             CX=CM+a  (fórmula inversa para o método posterior) - já corrigido pois na aula tem um erro corrigido posterior em aulas pelo professor
 		*/
 		return new Position(8-row,column-'a');
 	}
 	
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition()
+		return new ChessPosition((char)('a'+position.getColumn()),8-position.getRow());
+	}
+	@Override
+	public String toString() {
+		return ""+column+row;
 	}
 }
